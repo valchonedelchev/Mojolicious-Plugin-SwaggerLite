@@ -112,7 +112,7 @@ based on the routes of you lite_app.
 
   # Mojolicious::Lite
   plugin 'SwaggerLite';
-	$c->render( json => app->swagger_lite );
+  $c->render( json => app->swagger_lite );
 
 
 =head1 DESCRIPTION
