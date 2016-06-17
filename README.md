@@ -31,7 +31,10 @@ ls public/lib/swagger-ui/dist/index.html
 mprbo app
 ```
 
-- Point your browser to [http://localhost:3000/lib/swagger-ui/dist/index.html?url=/](http://localhost:3000/lib/swagger-ui/dist/index.html?url=/)
+- Point your browser to [http://localhost:3000/lib/swagger-ui/dist/index.html?url=/](http://localhost:3000/lib/swagger-ui/dist/index.html?url=/) and you should be able to see something like this:
+
+[![](https://dl.dropboxusercontent.com/u/97661837/demo.png)](https://dl.dropboxusercontent.com/u/97661837/Screen%20Shot%202016-06-17%20at%209.23.29%20PM.png)
+
 
 
 # Author
