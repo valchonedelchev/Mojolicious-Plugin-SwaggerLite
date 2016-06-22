@@ -34,24 +34,26 @@ sub process_route {
 
     my $path = $route->pattern->unparsed ? $route->pattern->unparsed : '/';
 
-    foreach my $via ( @{ $route->via } ) {
-        my ( $endpoint, $data ) = (
-            $path,
-            {   parameters  => [],
-                tags        => [],
-                operationId => $route->name,
-                summary     => '',
-                description => '',
-                responses   => { 200 => { description => "OK" }, },
-            }
-        );
+    if ( $route->via ) {
+        foreach my $via ( @{ $route->via } ) {
+            my ( $endpoint, $data ) = (
+                $path,
+                {   parameters  => [],
+                    tags        => [],
+                    operationId => $route->name,
+                    summary     => '',
+                    description => '',
+                    responses   => { 200 => { description => "OK" }, },
+                }
+            );
 
-        $endpoint =~ s/[\:\#\*]([^\/]*)/\{$1\}/g;
-        $endpoint =~ s/\{\}//g;
+            $endpoint =~ s/[\:\#\*]([^\/]*)/\{$1\}/g;
+            $endpoint =~ s/\{\}//g;
 
-        $data->{parameters} = extract_parameters($endpoint);
+            $data->{parameters} = extract_parameters($endpoint);
 
-        $output->{paths}->{$endpoint}->{ lc($via) } = $data;
+            $output->{paths}->{$endpoint}->{ lc($via) } = $data;
+        }
     }
 
     if ( $route->children ) {
